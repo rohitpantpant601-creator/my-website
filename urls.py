@@ -1,35 +1,33 @@
-from django.urls import path
-from . import views
+"""
+URL configuration for website project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/5.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    # Basic Pages
-    path('', views.home, name='home'),
-    path('product/<int:pk>/',
-          views.product_detail,
-            name='product_detail'),
-    path('search/', views.search, name='search'),
-    
-    # Cart System
-    path('cart/', views.cart, name='cart'),
-    path('add-to-cart/<int:pk>/', views.add_to_cart, name='add_to_cart'),
-    path('update_item/', views.update_item, name="update_item"),
+    path('admin/', admin.site.urls),
+    path('', include('web.urls')),
+] 
 
-    # Checkout & Payment (Fixes Applied)
-    # Ye page dikhayega summary
-    path('checkout/<int:pk>/', views.checkout, name='checkout'), 
-    
-    # Ye Stripe payment start karega (Iska naam 'create_checkout_session' hi rakha hai)
-    path('create-checkout-session/<int:pk>/', views.create_checkout_session, name='create_checkout_session'),
-    
-    # Success aur Cancel pages
-    path('payment_success/', views.payment_success_view, name='payment_success'),
-    path('payment_cancel/', views.payment_cancel_view, name='payment_cancel'),
-
-    # Dashboard & Auth
-    path('seller/', views.seller_dashboard, name='seller_dashboard'),
-    path('register/', views.register, name='register'),
-    path('login/', views.user_login, name='login'),
-    path('logout/', views.user_logout, name='logout'),
-# urls.py mein ye line check karein
-path('my-orders/', views.orders_view, name='orders_view'),
-]
+# Ye dhyan se copy karo, brackets ka dhyan rakhna
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
