@@ -1,0 +1,171 @@
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+
+.product-page {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+/* Image Styling */
+.product-image-card {
+    background: #f4f4f4;
+    border-radius: 20px; /* Subtle round corners */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.product-image-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    mix-blend-mode: multiply; /* Helps image blend with background if white */
+}
+
+/* Text & Headings */
+.custom-breadcrumb {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.product-title {
+    font-size: 42px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-transform: lowercase; /* Optional: Jaisa image mein tha */
+}
+
+.product-price {
+    font-size: 24px;
+    font-weight: 500;
+    color: #28a745;
+    margin-bottom: 20px;
+}
+
+.divider {
+    height: 1px;
+    background: #e0e0e0;
+    width: 100%;
+    margin: 30px 0;
+}
+
+.product-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+    max-width: 500px;
+}
+
+/* Size Selector Magic */
+.section-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.size-options {
+    display: flex;
+    gap: 10px;
+}
+
+.size-box {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d1d1d1;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.btn-check:checked + .size-box {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+.size-box:hover {
+    border-color: #000;
+}
+
+/* Buttons Styling */
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-black {
+    background: #111;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-weight: 500;
+    border: none;
+    flex: 1;
+}
+
+.btn-outline-custom {
+    border: 1px solid #111;
+    color: #111;
+    padding: 15px 40px;}
+    
+.product-slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* Mobile ke liye adjust karein */
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+}
+
+.slide {
+    min-width: 100%;
+    scroll-snap-align: start;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+/* Dots styling */
+.dots-container {
+    text-align: center;
+    padding: 10px;
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    margin: 0 4px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.active {
+    background-color: #717171;
+}
+
+/* Scrollbar hide karne ke liye */
+.slider-wrapper::-webkit-scrollbar {
+    display: none;
+}

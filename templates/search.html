@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Search Results for "{{ query }}"</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for product in products %}
+        <div class="col">
+            <div class="card h-100 product-card shadow-sm border-0">
+                <div class="p-3 text-center">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="img-fluid" style="height:150px; object-fit:contain;">
+                    {% else %}
+                        <div class="bg-light p-5">No Image</div>
+                    {% endif %}
+                </div>
+                <div class="card-body text-center">
+                    <h5>{{ product.name }}</h5>
+                    <p class="text-success fw-bold">₹{{ product.price }}</p>
+                    <a href="{% url 'product_detail' product.pk %}" class="btn btn-outline-primary btn-sm w-100">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center mt-5">
+           <h3>No products found!</h3>
+<a href="{% url 'home' %}" class="btn btn-secondary mt-2">Back to Home</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

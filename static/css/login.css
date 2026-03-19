@@ -1,0 +1,113 @@
+/* Custom Font (Agar register page pe nahi lagaya tha) */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+
+.auth-wrapper {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fdfdfd; /* Clean off-white */
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.auth-card {
+    background: #ffffff;
+    max-width: 420px;
+    width: 100%;
+    padding: 50px 40px;
+    border-radius: 28px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08); /* Soft deep shadow */
+    border: 1px solid #f0f0f0;
+}
+
+.brand-dot {
+    width: 12px;
+    height: 12px;
+    background: #000;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+}
+
+.auth-header h2 {
+    font-weight: 800;
+    font-size: 2rem;
+    color: #111;
+    text-align: center;
+    letter-spacing: -1px;
+}
+
+.auth-header p {
+    text-align: center;
+    color: #888;
+    margin-bottom: 35px;
+}
+
+/* Django Form Inputs */
+.form-content p {
+    margin-bottom: 18px;
+}
+
+.form-content label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #222;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.form-content input {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1.5px solid #eee;
+    background: #f9f9f9;
+    transition: all 0.25s ease;
+}
+
+.form-content input:focus {
+    outline: none;
+    background: #fff;
+    border-color: #000;
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.03);
+}
+
+/* Extra Options */
+.options-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+}
+
+.forgot-pass {
+    color: #666;
+    text-decoration: none;
+}
+
+.forgot-pass:hover { text-decoration: underline; }
+
+/* Login Button */
+.btn-premium {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 16px;
+    border-radius: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-premium:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.auth-footer {
+    text-align: center;}

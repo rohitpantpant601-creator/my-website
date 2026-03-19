@@ -1,0 +1,93 @@
+/* Custom Navbar Styling */
+.luxury-nav {
+    background: #111 !important; /* Premium Dark */
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Brand Name */
+.brand-premium {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff !important;
+    letter-spacing: -1px;
+}
+.brand-premium span {
+    color: #ffc107; /* Gold Highlight */
+}
+
+/* Floating Search Bar */
+.search-wrapper {
+    width: 40%;
+    background: rgba(255,255,255,0.08);
+    border-radius: 30px;
+    padding: 2px 5px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+.search-wrapper:focus-within {
+    background: rgba(255,255,255,0.15);
+    border-color: #ffc107;
+}
+.search-wrapper input {
+    background: transparent !important;
+    color: #fff !important;
+    font-size: 0.9rem;
+}
+.btn-search {
+    color: #ffc107;
+}
+
+/* Nav Links */
+.nav-btn {
+    color: rgba(255,255,255,0.7) !important;
+    font-weight: 500;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+.nav-btn:hover {
+    color: #ffc107 !important;
+}
+
+/* User Profile Pill */
+.profile-pill {
+    background: rgba(255,255,255,0.1);
+    color: #fff !important;
+    border-radius: 20px;
+    padding: 6px 15px !important;
+    font-weight: 600;
+}
+
+.btn-join {
+    background: #ffc107;
+    color: #000 !important;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 6px 20px !important;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+.btn-join:hover {
+    background: #e0a800;
+    transform: translateY(-2px);
+}
+
+.cart-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 8px;
+    width: 8px;
+    background: #ffc107;
+    border-radius: 50%;
+}
+
+.v-divider {
+    width: 1px;
+    height: 25px;
+    background: rgba(255,255,255,0.2);
+    margin: 0 15px;
+}
+/* Laptop View Dropdown Fix */
+

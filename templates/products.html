@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+
+<section class="product-page-wrapper mt-5 mb-5">
+    <div class="container">
+        <div class="row gx-lg-5">
+            <div class="col-md-6 col-lg-7">
+                <div class="d-flex gap-3">
+                    
+                    <div class="thumbnails-column d-none d-md-flex flex-column gap-2" style="min-width: 80px;">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" class="thumb-img active-thumb" 
+                                 style="width: 80px; height: 80px; object-fit: cover; cursor: pointer; border: 2px solid #ff9900; border-radius: 4px;" 
+                                 onclick="changeImage(this, '{{ product.image.url }}')">
+                        {% endif %}
+
+                        {% for pi in product.images.all %}
+                            <img src="{{ pi.image.url }}" class="thumb-img" 
+                                 style="width: 80px; height: 80px; object-fit: cover; cursor: pointer; border: 1px solid #ccc; border-radius: 4px;" 
+                                 onclick="changeImage(this, '{{ pi.image.url }}')">
+                        {% endfor %}
+                    </div>
+
+                    <div class="main-display-container flex-grow-1 border rounded bg-white text-center p-2">
+                        {% if product.image %}
+                            <img id="main-display" src="{{ product.image.url }}" 
+                                 class="img-fluid" style="max-height: 500px; width: auto; object-fit: contain;">
+                        {% else %}
+                            <img src="{% static 'images/default.jpg' %}" class="img-fluid">
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="d-flex d-md-none gap-2 mt-3 overflow-auto pb-2">
+                     {% if product.image %}
+                        <img src="{{ product.image.url }}" style="width: 60px; height: 60px;" onclick="changeImage(this, '{{ product.image.url }}')">
+                     {% endif %}
+                     {% for pi in product.images.all %}
+                        <img src="{{ pi.image.url }}" style="width: 60px; height: 60px;" onclick="changeImage(this, '{{ pi.image.url }}')">
+                     {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-5 mt-4 mt-md-0">
+                <div class="product-info-sidebar">
+                    <nav aria-label="breadcrumb" class="mb-3">
+                        <ol class="breadcrumb bg-transparent p-0">
+                            <li class="breadcrumb-item"><a href="/" class="text-muted text-decoration-none small">Home</a></li>
+                            <li class="breadcrumb-item active small">{{ product.name }}</li>
+                        </ol>
+                    </nav>
+
+                    <h1 class="product-main-title fw-bold text-dark">{{ product.name }}</h1>
+                    
+                    <div class="price-section my-3">
+                        <span class="current-price fs-2 fw-bold text-dark">₹{{ product.price }}</span>
+                        <p class="text-muted small">Inclusive of all taxes</p>
+                    </div>
+
+                    <div class="product-description-box my-4">
+                        <h6 class="fw-bold text-uppercase small">Description</h6>
+                        <p class="text-secondary">{{ product.description }}</p>
+                    </div>
+
+                    <form action="{% url 'add_to_cart' product.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="size-selection-wrapper mb-4">
+                            <h6 class="fw-bold">Select Size</h6>
+                            <div class="d-flex gap-2 flex-wrap mt-2">
+                                <input type="radio" class="btn-check" name="size" id="s" value="S">
+                                <label class="btn btn-outline-dark" for="s">S</label>
+
+                                <input type="radio" class="btn-check" name="size" id="m" value="M" checked>
+                                <label class="btn btn-outline-dark" for="m">M</label>
+
+                                <input type="radio" class="btn-check" name="size" id="l" value="L">
+                                <label class="btn btn-outline-dark" for="l">L</label>
+
+                                <input type="radio" class="btn-check" name="size" id="xl" value="XL">
+                                <label class="btn btn-outline-dark" for="xl">XL</label>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons-stack d-grid gap-3 mt-5">
+                            <button type="submit" class="btn btn-dark btn-lg py-3 fw-bold rounded-pill">
+                                ADD TO CART
+                            </button>
+                            <a href="{% url 'checkout' product.id %}" class="btn btn-outline-dark btn-lg py-3 fw-bold rounded-pill">
+                                BUY IT NOW
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(element, src) {
+            // Main image change karo
+            document.getElementById('main-display').src = src;
+            
+            // Sabhi thumbnails ka border grey karo
+            let thumbs = document.getElementsByClassName('thumb-img');
+            for (let t of thumbs) {
+                t.style.borderColor = "#ccc";
+            }
+            // Sirf click kiye hue thumbnail ka border orange karo
+            element.style.borderColor = "#ff9900";
+        }
+    </script>
+</section>
+{% endblock %}

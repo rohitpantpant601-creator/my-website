@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout | Decathlon</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h2>Shipping Details</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Confirm Order</button>
+        </form>
+    </div>
+</body>
+</html>
